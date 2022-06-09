@@ -26,7 +26,7 @@ orden_app <- function(mi_posicion, elemento){
   # ==============================================================================
 
   cuerpo <- '{"username":"kepa@techfriendly.es","password":"kepatech"}'
-  post <- httr::POST(url = "https://plataforma.plasencia.es/api/auth/login",
+  post <- httr::POST(url = "http://plataforma:9090/api/auth/login",
                      add_headers("Content-Type"="application/json","Accept"="application/json"),
                      body = cuerpo,
                      verify= FALSE,
@@ -41,7 +41,7 @@ orden_app <- function(mi_posicion, elemento){
   # PETICIÓN DATOS ATRIBUTO
   # ==============================================================================
 
-  url_thb_fechas <- paste("https://plataforma.plasencia.es/api/plugins/telemetry/ASSET/",id_activo_app,"/values/attributes/SERVER_SCOPE",sep = "")
+  url_thb_fechas <- paste("http://plataforma:9090/api/plugins/telemetry/ASSET/",id_activo_app,"/values/attributes/SERVER_SCOPE",sep = "")
   peticion <- GET(url_thb_fechas, add_headers("Content-Type"="application/json","Accept"="application/json","X-Authorization"=auth_thb))
 
   # Tratamiento datos. De raw a dataframe
